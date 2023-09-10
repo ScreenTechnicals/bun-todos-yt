@@ -2,7 +2,24 @@
 
 This is a fun project for beginners who are wising to get started with **Next Js** with **Bun, Zod, TailwindCSS, Kinde and MongoDB**. In This Course We are going to build a fullstack **_todo list_** where a user can perform all kinds of **CRUD** Operations with its todo.
 
-## Installation & Setup
+## Quick Start 🚀
+
+I have created an amzing ui for you to get started, you can use this templete whenever you need it, you have to simply **fork/clone** this repo.
+
+```
+git clone https://github.com/ScreenTechnicals/bun-todos.git
+```
+
+**🍁 All the required packages has been installed!**
+
+## Kinde Authentication
+
+Open These 👇 :
+
+- ✅ [Kinde](https://kinde.com/docs/developer-tools/nextjs-sdk)
+- ✅ [Kinde Next JS 13 App Router Docs](https://kinde.com/docs/developer-tools/nextjs-sdk)
+
+## Manual Installation & Setup
 
 1. Install Bun in your system(Mac/Linux/Windows SubSystem in Linux(WSL)):
 
@@ -87,17 +104,42 @@ Here is my **package.json**
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "zod": "^3.22.2"
   }
 }
-
 ```
 
-## YouTube
+## Tech Stack 💻
 
-## Tech Stack
+- Next Js 13.4 App Router
+- Tailwind CSS
+- Mongodb
+- Kinde Authentication
+- Zod
+- Bun
 
-## Contributors
+## Shoutouts 😎
+
+Follow us on GitHub and Fork this repo, follow the tutorial on our youtube channel and complete the given tasks to get a shoutout here!
+
+---
+
+✨ Your project goes here.
+
+## FAQs
+
+### Q. How to get a shoutout?
+
+**Ans:** follow us on GitHub and Fork this repo, follow the tutorial on our youtube channel and complete the given tasks to get a shoutout here!
+
+### Q. Is this a frontend tutorial?
+
+**Ans:** Not quite really, this is a fullstack tutorial.
+
+### Q. Is this a backend tutorial?
+
+**Ans:** Not quite really, this is a fullstack tutorial.
