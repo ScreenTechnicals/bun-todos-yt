@@ -2,12 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { BiSolidUserCircle } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
+import toast from "react-hot-toast";
 
-const Header = () => {
-  const [toggler, setToggler] = useState<Boolean>(false);
+const Header = ({
+  isAuthenticated,
+  user,
+}: {
+  isAuthenticated: boolean;
+  user: any;
+}) => {
+  const [toggler, setToggler] = useState<boolean>(false);
+  const router = useRouter();
   return (
-    <header className="sticky top-0 left-0 z-50 backdrop-blur-3xl w-full">
+    <header className="fixed top-0 left-0 z-50 backdrop-blur-3xl w-full">
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -15,7 +26,7 @@ const Header = () => {
         <div className="flex lg:flex-1">
           <Link href={"/"}>
             <button className="font-[700] text-2xl">
-              Bun <span className="text-purple-800">Todos</span>
+              <span>Bun</span> <span className="text-purple-800">Todos</span>
             </button>
           </Link>
         </div>
@@ -27,7 +38,6 @@ const Header = () => {
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
-            <span className="sr-only">Open main menu</span>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -45,12 +55,23 @@ const Header = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <Link
-            href="/todos"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Todos
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              href="/todos"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Todos
+            </Link>
+          ) : (
+            <button
+              onClick={() => {
+                toast.error("Please Login!");
+              }}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Todos
+            </button>
+          )}
           <Link
             href="/about"
             className="text-sm font-semibold leading-6 text-gray-900"
@@ -64,21 +85,73 @@ const Header = () => {
             Contact Us
           </Link>
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/login"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Log in <span aria-hidden="true">→</span>
-          </Link>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-2">
+          {isAuthenticated ? (
+            <div className="relative">
+              <button
+                type="button"
+                className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 border px-6 py-1 rounded-full border-[#000] group"
+                aria-expanded="false"
+              >
+                <span>Account</span>
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <div className="absolute cursor-default invisible group-focus-within:visible left-1/2 z-10 mt-5 top-5 flex w-screen max-w-max -translate-x-[90%] px-4">
+                  <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                    <div className="p-4">
+                      <div className="group relative flex gap-x-6 rounded-lg p-4">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                          <BiSolidUserCircle size={30} />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900 text-start text-2xl">
+                            {user?.given_name + " " + user?.family_name}
+                          </p>
+                          <p className="mt-1 text-gray-600">{user?.email}</p>
+                        </div>
+                      </div>
+                      <div className="w-full">
+                        <span
+                          onClick={() => {
+                            router.push("/logout");
+                          }}
+                          className="flex cursor-pointer items-center justify-center bg-red-500 w-full text-white p-2 space-x-2 rounded-md hover:bg-red-700 transition-all"
+                        >
+                          <FiLogOut />
+                          <span>Logout</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="text-sm font-semibold leading-6 text-gray-900 border border-[#000] rounded-full px-5 py-1"
+            >
+              <button>Log In</button>
+            </Link>
+          )}
         </div>
       </nav>
       {/* Mobile menu, show/hide based on menu open state. */}
       <div
         className={
           toggler
-            ? "fixed top-0 inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:hidden transition-all"
-            : "fixed top-0 inset-y-0 right-0 z-50  overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:hidden w-full transition-all translate-x-[100%]"
+            ? "fixed top-0 inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:hidden transition-all h-screen"
+            : "fixed top-0 inset-y-0 right-0 z-50 h-screen overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:hidden w-full transition-all translate-x-[100%]"
         }
       >
         <div className="flex items-center justify-between">
