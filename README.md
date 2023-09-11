@@ -108,7 +108,6 @@ Here is my **package.json**
     "react-icons": "^4.11.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
-    "zod": "^3.22.2"
   }
 }
 ```
@@ -119,7 +118,6 @@ Here is my **package.json**
 - Tailwind CSS
 - Mongodb
 - Kinde Authentication
-- Zod
 - Bun
 - Typescript
 
