@@ -121,6 +121,7 @@ Here is my **package.json**
 - Kinde Authentication
 - Zod
 - Bun
+- Typescript
 
 ## Shoutouts 😎
 
