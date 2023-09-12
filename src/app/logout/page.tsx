@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const Page = () => {
   return (
@@ -14,10 +15,11 @@ const Page = () => {
               Cancel
             </button>
           </Link>
-
-          <button className="px-3 py-2 bg-red-600 text-white rounded-md md:text-xl">
-            Log Out
-          </button>
+          <LogoutLink>
+            <button className="px-3 py-2 bg-red-600 text-white rounded-md md:text-xl">
+              Log Out
+            </button>
+          </LogoutLink>
         </div>
       </div>
     </div>

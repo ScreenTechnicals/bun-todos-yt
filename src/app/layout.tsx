@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,18 +16,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = {
-    given_name: "User",
-    family_name: "Name",
-    email: "username@email.com",
-    picture: "",
-  };
+  const { getUser, isAuthenticated } = getKindeServerSession();
+  const user = getUser();
 
   return (
     <html lang="en">
       <body className={inter.className + " selection:bg-purple-300"}>
         <Toaster position="top-center" />
-        <Header isAuthenticated={true} user={user} />
+        <Header isAuthenticated={isAuthenticated()} user={user} />
         <div>
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-20"
