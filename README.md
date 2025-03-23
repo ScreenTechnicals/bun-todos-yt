@@ -123,7 +123,7 @@ Here is my **package.json**
 
 ## Shoutouts 😎
 
-Follow us on GitHub and Fork this repo, follow the tutorial on our youtube channel and complete the given tasks to get a shoutout here!
+Follow us on GitHub and Fork this repo, improve the code base and ui, find potential bugs and create issues and get shoutouts here
 
 ---
 
