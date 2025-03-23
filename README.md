@@ -134,11 +134,3 @@ Follow us on GitHub and Fork this repo, follow the tutorial on our youtube chann
 ### Q. How to get a shoutout?
 
 **Ans:** follow us on GitHub and Fork this repo, follow the tutorial on our youtube channel and complete the given tasks to get a shoutout here!
-
-### Q. Is this a frontend tutorial?
-
-**Ans:** Not quite really, this is a fullstack tutorial.
-
-### Q. Is this a backend tutorial?
-
-**Ans:** Not quite really, this is a fullstack tutorial.
